@@ -7,6 +7,8 @@
 <script>
 var map;
 var markers = [];
+
+// Adds map
 var init = function (){
     // map options
     var myOptions = {
@@ -51,8 +53,10 @@ async function getBuses(){
 function getMarker(bus){
 	if (bus.attributes.direction_id === 0) {
 		return 'red.png';
-	}
-	return 'blue.png';	
+    }
+    else{
+        return 'blue.png';	
+    }
 }
 
 google.maps.event.addDomListener(window,'load',init);
