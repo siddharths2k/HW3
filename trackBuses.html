@@ -36,7 +36,7 @@ async function addMarkers(){
 	setTimeout(addMarkers, 15000);
 }
 
-// Requests bus data from MBTA
+// Fetches bus data from MBTA
 async function getBusLocations(){
 	var url = 'https://api-v3.mbta.com/vehicles?api_key=36a4d4c5e30343c5a6a1a2f71aad5f4fbdfd&filter[route]=1&include=trip';	
 	const res = await fetch(url);
