@@ -15,13 +15,13 @@ var locations = [
 function init(){
     // map settings
     myOptions = {
-        zoom : 13.5,
+        zoom : 13,
         center: new google.maps.LatLng(42.37244,-71.1067285),
     }; 
 
     var map = new google.maps.Map(document.getElementById('map'), myOptions);
 
-    
+
     // map locations
     locations.forEach(function(location){
         latitude  = location[0];

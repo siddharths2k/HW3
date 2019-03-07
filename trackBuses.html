@@ -8,7 +8,7 @@ var markers = [];
 // load map
 function init(){
 	var myOptions = {
-		zoom      : 13.5,
+		zoom      : 13,
         center: new google.maps.LatLng(42.37244,-71.1067285),
 		mapTypeId : google.maps.MapTypeId.ROADMAP
 	};
@@ -35,7 +35,7 @@ async function addMarkers(){
 }
 // Request bus data from MBTA
 async function getBusLocations(){
-	var url = 'https://api-v3.mbta.com/vehicles?api_key=77d03edfadfd488fb775e572b679bdfd&filter[route]=1&include=trip';	
+	var url = 'https://api-v3.mbta.com/vehicles?api_key=36a4d4c5e30343c5a6a1a2f71aad5f4fbdfd&filter[route]=1&include=trip';	
 	const res = await fetch(url);
 	data = await res.json();
 	return data.data;
