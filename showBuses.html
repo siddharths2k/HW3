@@ -20,36 +20,41 @@ var init = function (){
 
 }
 
-
+// Adds bus markers to map
 async function addMarkers(){
     var buses = await getBuses();
     
     buses.forEach(function(bus){
-	    var icon = getIcon(bus);
+	    var marker = getMarker(bus);
         var lat  = bus.attributes.latitude;
         var long = bus.attributes.longitude;
         var latlng = new google.maps.LatLng(lat,long)
         var marker = new google.maps.Marker({
             position : latlng,
             map : map,
-            icon : icon,
+            marker : marker,
             id : bus.id
         });
         markers.push(marker);
     });
 }
+
+// Requests bus data from MBTA
 async function getBuses(){
 	var url = "https://api-v3.mbta.com/vehicles?api_key=36a4d4c5e30343c5a6a1a2f71aad5f4fbdfd&filter[route]=1&include=trip";
     var response = await fetch(url);
     var json = await response.json();
     return json.data;
 }
-function getIcon(bus){
+
+// Selects marker type based on bus direction
+function getMarker(bus){
 	if (bus.attributes.direction_id === 0) {
 		return 'red.png';
 	}
 	return 'blue.png';	
 }
+
 google.maps.event.addDomListener(window,'load',init);
 </script>
 

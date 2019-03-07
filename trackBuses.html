@@ -17,7 +17,7 @@ function init(){
   	addMarkers(); 
 };
 
-// Add bus markers to map
+// Adds bus markers to map
 async function addMarkers(){
 	var buses = await getBusLocations();
     buses.forEach(function(bus){
@@ -33,43 +33,53 @@ async function addMarkers(){
 	console.log(new Date());
 	setTimeout(addMarkers, 15000);
 }
-// Request bus data from MBTA
+
+// Requests bus data from MBTA
 async function getBusLocations(){
 	var url = 'https://api-v3.mbta.com/vehicles?api_key=36a4d4c5e30343c5a6a1a2f71aad5f4fbdfd&filter[route]=1&include=trip';	
 	const res = await fetch(url);
 	data = await res.json();
 	return data.data;
 };
+
+// Adds bus markers to map
 function addMarker(bus){
-	var icon = getIcon(bus);
+	var marker = getMarker(bus);
 	var marker = new google.maps.Marker({
 	    position: {
 	    	lat: bus.attributes.latitude, 
 	    	lng: bus.attributes.longitude
 	    },
 	    map: map,
-	    icon: icon,
+	    marker: marker,
 	    id: bus.id
 	});
 	markers.push(marker);
 }
-function getIcon(bus){
-	// select icon based on bus direction
+
+// Selects marker type based on bus direction
+function getMarker(bus){
 	if (bus.attributes.direction_id === 0) {
 		return 'red.png';
 	}
-	return 'blue.png';	
+	else{
+		return 'blue.png';	
+	}
 }
+
+// Moves marker to new location
 function moveMarker(marker,bus) {
-	// change icon if bus has changed direction
-	var icon = getIcon(bus);
-	marker.setIcon(icon);
-	// move icon to new lat/lon
+	// choose marker type based on direction
+	var marker = getMarker(bus);
+	marker.setMarker(marker);
+
+	// move marker to new position
     marker.setPosition( {
     	lat: bus.attributes.latitude, 
     	lng: bus.attributes.longitude
 	});
 }
+
 function getMarker(id){
 	var marker = markers.find(function(item){
 		return item.id === id;
