@@ -8,4 +8,6 @@ var data = function(){
     .then(function(json){console.log(json);})
 
 }; 
+
+
 setInterval(data, 15000); // Reload every 15000 milliseconds / 15 seconds

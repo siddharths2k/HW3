@@ -14,8 +14,9 @@ function init(){
 	};
 	var element = document.getElementById('map');
   	map = new google.maps.Map(element, myOptions);
-  	addMarkers();
+  	addMarkers(); 
 };
+
 // Add bus markers to map
 async function addMarkers(){
 	var buses = await getBusLocations();
