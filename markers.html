@@ -10,24 +10,22 @@ var locations = [
     [42.365337, -71.103534],
     [42.362423, -71.085583]
 ]
-var lat  = 0;
-var long = 0;
-var length = locations.length;
-var findCenter = function(item){
-    lat  += item[0]/length;
-    long += item[1]/length;
-}
-locations.forEach(findCenter);
+
+// create map
 function init(){
+    // map settings
     myOptions = {
-        zoom : 14,
-        center: new google.maps.LatLng(lat,long)
+        zoom : 13.5,
+        center: new google.maps.LatLng(42.37244,-71.1067285),
     };
+
     var map = new google.maps.Map(document.getElementById('map'), myOptions);
-    locations.forEach(function(item){
-        lat  = item[0];
-        long = item[1];
-        latlng = new google.maps.LatLng(lat,long)
+
+    // map locations
+    locations.forEach(function(location){
+        latitude  = location[0];
+        longitude = location[1];
+        latlng = new google.maps.LatLng(latitude,longitude)
         var marker = new google.maps.Marker({
             position : latlng,
             map : map,

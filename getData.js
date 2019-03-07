@@ -9,4 +9,4 @@ var data = function(){
 
 };
 
-setInterval(data, 15000);
+setInterval(data, 15000); // Reload every 15000 milliseconds / 15 seconds
