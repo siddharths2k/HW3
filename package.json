@@ -1,0 +1,19 @@
+{
+  "name": "hw3",
+  "version": "1.0.0",
+  "description": "homework 3",
+  "main": "getData.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddharths2k/HW3.git"
+  },
+  "author": "Siddharth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/siddharths2k/HW3/issues"
+  },
+  "homepage": "https://github.com/siddharths2k/HW3#readme"
+}
