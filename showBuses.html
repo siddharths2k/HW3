@@ -10,7 +10,7 @@ var markers = [];
 
 // Adds map
 var init = function (){
-    // map options
+    // Map settings
     var myOptions = {
         zoom : 13,
         center: new google.maps.LatLng(42.37244,-71.1067285),
@@ -18,23 +18,21 @@ var init = function (){
     };
     map = new google.maps.Map(document.getElementById('map'), myOptions);
     addMarkers(); 
-    
-
 }
 
-// Adds bus markers to map
+// Adds new bus markers to map
 async function addMarkers(){
     var buses = await getBuses();
     
     buses.forEach(function(bus){
-	    var marker = getMarker(bus);
+	    var icon = getMarkerType(bus);
         var lat  = bus.attributes.latitude;
         var long = bus.attributes.longitude;
         var latlng = new google.maps.LatLng(lat,long)
         var marker = new google.maps.Marker({
             position : latlng,
             map : map,
-            marker : marker,
+            icon : icon,
             id : bus.id
         });
         markers.push(marker);
@@ -50,7 +48,8 @@ async function getBuses(){
 }
 
 // Selects marker type based on bus direction
-function getMarker(bus){
+function getMarkerType(bus)
+{
 	if (bus.attributes.direction_id === 0) {
 		return 'red.png';
     }
